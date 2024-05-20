@@ -3,39 +3,33 @@
 <c:set var="pageTitle" value="MAIN"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<div>FAQ</div>
 <form onsubmit="event.preventDefault(); submitQuestion();">
-	<textarea id="questionContent" placeholder="문의사항을 입력하세요."></textarea>
-	<button type="submit">검색</button>
+    <textarea id="questionContent" placeholder="문의사항을 입력하세요"></textarea>
+    <button type="submit">검색</button>
 </form>
 <h2>답변</h2>
 <ul id="questionsList"></ul>
 
 <script>
-	async
-	function submitQuestion() {
-		const content = document.getElementById("questionContent").value;
-		const response = await
-		fetch('/api/questions', {
-			method : 'POST',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			body : JSON.stringify({
-				content : content
-			})
-		});
-		const data = await
-		response.json();
-		displayAnswer(content, data);
-	}
+async function submitQuestion() {
+    const content = document.getElementById("questionContent").value;
+    const response = await fetch('/api/questions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ content: content })
+    });
+    const data = await response.json();
+    displayAnswer(content, data);
+}
 
-	function displayAnswer(question, answer) {
-		const questionsList = document.getElementById("questionsList");
-		const li = document.createElement("li");
-		li.innerHTML = `<strong>${question}</strong>: ${answer}`;
-		questionsList.appendChild(li);
-	}
+    function displayAnswer(question, answer) {
+        const questionsList = document.getElementById("questionsList");
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${question}</strong>: ${answer}`;
+        questionsList.appendChild(li);
+    }
 </script>
 
 <button class="tourist"></button>
