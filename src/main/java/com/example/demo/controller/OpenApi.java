@@ -20,8 +20,7 @@ public class OpenApi {
 
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
-        //json type으로 응답받고 싶을 때는 아래 주석을 제거하시고 사용바랍니다.
-        //conn.setRequestProperty("Accept","application/json");
+
         System.out.println("Response code: " + conn.getResponseCode());
 
         BufferedReader rd;

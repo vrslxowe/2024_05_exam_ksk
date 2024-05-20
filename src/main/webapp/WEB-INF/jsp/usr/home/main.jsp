@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
- <h1>제주도 관광지 정보</h1>
+ <h1>제주도 관광지</h1>
     
     <div th:if="${response}">
         <pre th:text="${response}"></pre>
